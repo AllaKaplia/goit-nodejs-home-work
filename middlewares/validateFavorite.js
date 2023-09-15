@@ -1,11 +1,11 @@
 const { HttpError } = require('../helpers');
 
-const validateBody = schema => {
+const validateBodyFavorite = schema => {
     const fun = (req, res, next) => {
         const { error } = schema.validate(req.body);
   
         if (Object.keys(req.body).length === 0) {
-            throw HttpError(400, 'Missing request body');
+            throw HttpError(400, 'Missing request favorite');
         } else if (error) {
             throw HttpError(400, error.message);
         }
@@ -16,5 +16,4 @@ const validateBody = schema => {
     return fun;
 };
 
-
-module.exports = validateBody;
+module.exports = validateBodyFavorite;
